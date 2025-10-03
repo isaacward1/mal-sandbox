@@ -1,7 +1,7 @@
 # mal-sandbox
 my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainly for personal reference and lazy documentation, but i figured i'd share
 <br><br>
-yes, i am aware that premade malware analysis VMs like [remnux](https://remnux.org/) and [flare-vm](https://github.com/mandiant/flare-vm) exist, but they have a ton of tools i never touch and i thought it was fun to make my own 😄
+(yes, i am aware that premade malware analysis VMs like remnux and flare-vm exist, but they have a ton of tools i never touch and i thought it was fun to make my own 😄)
 
 <br>
 
