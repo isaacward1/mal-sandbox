@@ -10,7 +10,7 @@ yes, i am aware that premade malware analysis VMs like [remnux](https://remnux.o
 - 4 vCPUs
 - 8 GB Memory
 - 40 GB Storage
-- NAT Network Interface (or Host-only/Isolated if using [fakenet](https://github.com/mandiant/flare-fakenet-ng))
+- NAT Network Interface (or Host-only/Isolated if using fakenet)
 
 <br>
 
