@@ -26,7 +26,9 @@ Firewall rules applied on both host/guest machines when using a NATed VM network
     sudo ufw deny out on <vm-interface> from any to 192.168.0.0/16 comment 'deny to local #1'
     sudo ufw deny out on <vm-interface> from any to 172.16.0.0/12 comment 'deny to local #2'
     sudo ufw deny out on <vm-interface> from any to 10.0.0.0/8 comment 'deny to local #3'
+    
     sudo ufw allow out on <vm-interface> from any to 192.168.100.1 comment 'allow to internet'
+    sudo ufw deny out on virbr4 from any to any comment 'isolated'
 
 #### Windows Host (via Windows Firewall)
 
