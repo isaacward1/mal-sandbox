@@ -22,20 +22,11 @@ Firewall rules applied on both host/guest machines when using a NATed VM network
 #### Linux Host (via UFW)
 
 \** Replace \<vm-interface\> with the name of VM's NAT interface
-
-    sudo ufw deny out on <vm-interface> from any to 192.168.0.0/16 comment 'deny to local #1'
-    sudo ufw deny out on <vm-interface> from any to 172.16.0.0/12 comment 'deny to local #2'
-    sudo ufw deny out on <vm-interface> from any to 10.0.0.0/8 comment 'deny to local #3'
     
     sudo ufw allow out on <vm-interface> from any to 192.168.100.1 comment 'allow to internet'
     sudo ufw deny out on virbr4 from any to any comment 'isolated'
 
 #### Windows Host (via Windows Firewall)
-
-    sudo ufw deny out on <vm-interface> from any to 192.168.0.0/16 comment 'deny to local #1'
-    sudo ufw deny out on <vm-interface> from any to 172.16.0.0/12 comment 'deny to local #2'
-    sudo ufw deny out on <vm-interface> from any to 10.0.0.0/8 comment 'deny to local #3'
-    sudo ufw allow out on <vm-interface> from any to 192.168.100.1 comment 'allow to internet'
 
 <br>
 
@@ -44,9 +35,23 @@ Firewall rules applied on both host/guest machines when using a NATed VM network
 
 <br>
 
-## Tools
-- CyberChef
-- Sysinternals Suite
-- i
+## Analysis Tools
+### Static
+- [HxD](https://mh-nexus.de/en/hxd/)
+- [PEStudio](https://www.winitor.com/download)
+- [x64dbg](https://github.com/x64dbg/x64dbg)
+- [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
+- [CyberChef](https://github.com/gchq/CyberChef)
+
+### Dynamic/Network
+- [mitmproxy](https://www.mitmproxy.org/)
+- [Wireshark](https://www.wireshark.org/download.html)
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
+    - TCPView
+    - Procmon
+    - Process Explorer
+    - Autoruns
+- [System Informer](https://github.com/winsiderss/systeminformer) (Process Hacker)
+- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
 
 <br>
