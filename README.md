@@ -24,7 +24,7 @@ Firewall rules applied on both host/guest machines when using a NATed VM network
 \** Replace \<vm-interface\> with the name of VM's NAT interface
     
     sudo ufw allow out on <vm-interface> from any to 192.168.100.1 comment 'allow to internet'
-    sudo ufw deny out on virbr4 from any to any comment 'isolated'
+    sudo ufw deny out on <vm-interface> from any to any comment 'isolated'
 
 #### Windows Host (via Windows Firewall)
 
