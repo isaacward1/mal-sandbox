@@ -38,7 +38,7 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 
 ## Network Isolation
 
-Below are firewall rules I have applied on both the host/guest machines (using a NATed VM network). They block communication with the host machine's LAN while allowing outbound traffic to the internet. Note that this is generally not recommended and most prefer full network isolation (I like the full experience). These rules are not necessary when using host-only/isolated interface + FakeNet.
+Below are firewall rules I have applied on both the host/guest machines (using a NATed VM network). They block communication with the host machine's LAN while allowing outbound traffic to the internet. Note that this is generally not recommended and most prefer full network isolation (I like the full experience). These rules are not needed when using host-only/isolated interface + FakeNet.
 
 ### Host Firewall Rules (UFW)
 
