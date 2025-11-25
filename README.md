@@ -9,30 +9,9 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 ## Hardware
 - Windows 10
 - 4 vCPUs
-- 8 GB Memory
+- 6 GB Memory
 - 40 GB Storage
-- NAT Network Interface (or Host-only/Isolated if using fakenet)
-
-<br>
-
-## Network Isolation
-Firewall rules applied on both host/guest machines when using a NATed VM network:
-
-### 1. Host Firewall Rules
-
-#### Linux Host (UFW)
-
-\** Replace \<vm-interface\> with the name of VM's NAT interface
-    
-    sudo ufw allow out on <vm-interface> from any to 192.168.100.1 comment 'allow to internet'
-    sudo ufw deny out on <vm-interface> from any to any comment 'isolated'
-
-#### Windows Host (Windows Firewall)
-
-<br>
-
-### 2. Guest Firewall Rules
-
+- NAT Network Interface (Host-only/Isolated if using FakeNet)
 
 <br>
 
@@ -47,12 +26,41 @@ Firewall rules applied on both host/guest machines when using a NATed VM network
 ### Dynamic/Network
 - [mitmproxy](https://www.mitmproxy.org/)
 - [Wireshark](https://www.wireshark.org/download.html)
-- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
-    - TCPView
-    - Procmon
-    - Process Explorer
-    - Autoruns
-- [System Informer](https://github.com/winsiderss/systeminformer) (Process Hacker)
-- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) [1]
+- [System Informer](https://github.com/winsiderss/systeminformer)
+- [RegShot](https://sourceforge.net/projects/regshot/)
+- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng) [2]
+
+[1] only TCPView, Procmon, Process Explorer, Autoruns <br>
+[2] I don't personally use this, but it is recommended if you do not understand the risks of using bridged/NATed VM interfaces
+
+<br>
+
+## Network Isolation
+
+Below are firewall rules I have applied on both the host/guest machines (using a NATed VM network). They block communication with the host machine's LAN while allowing outbound traffic to the internet. Note that this is generally not recommended and most prefer full network isolation (I like the full experience). These rules are not necessary when using host-only/isolated interface + FakeNet.
+
+### Host Firewall Rules (UFW)
+
+    sudo ufw allow out on <vm-interface> from any to <vm-gateway-ip> comment 'allow to internet'
+    sudo ufw deny out on <vm-interface> from any to any comment 'isolated'
+
+\* Replace \<vm-interface\> with the name of VM's NAT interface and \<vm-gateway-ip\> with the IP of that interface.
+
+### Guest Firewall Rules (Windows Firewall)
+
+    Windows Firewall Rules Here
+
+<br>
+
+## File Transfer
+
+### Host --> VM
+fwefwef
+
+### VM --> Host
+wefwefwefwf
+
+
 
 <br>
