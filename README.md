@@ -55,6 +55,16 @@ Below are firewall rules I have applied on both the host/guest machines (using a
 
 ## File Transfer
 
+Observing past VM escapes it is clear that we do not want:
+- Shared clipboard
+- Shared folders (read/write)
+- Drag-and-drop
+- USB Redirection
+
+Instead we want
+- possibly a lightweight vm or container that is dedicated to uploading and downloading files.
+- Shared read-only folder
+
 ### Host --> VM
 fwefwef
 
