@@ -31,7 +31,7 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng) [2]
 
-[1] only TCPView, Procmon, Process Explorer, Autoruns <br>
+[1] I only use TCPView, Procmon, Process Explorer, Autoruns <br>
 [2] I don't personally use this, but it is recommended if you do not understand the risks of using bridged/NATed VM interfaces
 
 <br>
@@ -71,6 +71,10 @@ fwefwef
 ### VM --> Host
 wefwefwefwf
 
+<br>
 
+## Tips
+- When everything is to your liking, take a snapshot so that you can revert to a clean state after detonating malware.
+- Make sure all qemu and kvm 
 
 <br>
