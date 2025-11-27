@@ -2,7 +2,7 @@
 
 my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainly for personal reference and lazy documentation, but i thought i'd share
 <br><br>
-(yes, i am aware that premade malware analysis VMs like remnux and flare-vm exist, but they have a ton of tools i never touch and i thought it was fun to make my own 😅)
+(yes, i am aware that premade malware analysis VMs like [REMnux](https://remnux.org/) and [FLARE-VM](https://github.com/mandiant/flare-vm) exist, but they have a ton of tools i never touch and i thought it was fun to make my own 😅)
 
 <br>
 
@@ -30,6 +30,17 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng) [2]
+
+
+<!--
+- [FLOSS](https://github.com/mandiant/flare-floss)
+- [Detect it Easy]()
+- [YARA](https://github.com/VirusTotal/yara)
+- [CAPA]()
+- BinText
+- Python + RE libraries
+- [API Monitor](http://www.rohitab.com/apimonitor)
+-->
 
 [1] I only use TCPView, Procmon, Process Explorer, Autoruns <br>
 [2] I don't personally use this, but it is recommended if you do not understand the risks of using bridged/NATed VM interfaces
