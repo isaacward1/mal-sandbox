@@ -7,7 +7,7 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 <br>
 
 ## Hardware
-- Windows 10
+- Windows 11
 - 4 vCPUs
 - 6 GB Memory
 - 40 GB Storage
@@ -34,20 +34,26 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 
 <!--
 - [FLOSS](https://github.com/mandiant/flare-floss)
-- [Detect it Easy]()
+- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [YARA](https://github.com/VirusTotal/yara)
-- [CAPA]()
+- [CAPA](https://github.com/mandiant/capa/releases)
+- [API Monitor](http://www.rohitab.com/apimonitor)
 - BinText
 - Python + RE libraries
-- [API Monitor](http://www.rohitab.com/apimonitor)
+- 
 -->
 
-[1] I only use TCPView, Procmon, Process Explorer, Autoruns <br>
+[1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
 [2] I don't personally use this, but it is recommended if you do not understand the risks of using bridged/NATed VM interfaces
 
 <br>
 
-## Network Isolation
+## Setup
+### Removing interference
+1. Follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to disable 
+
+
+### Network Isolation
 
 Below are firewall rules I have applied on both the host/guest machines (using a NATed VM network). They block communication with the host machine's LAN while allowing outbound traffic to the internet. Note that this is generally not recommended and most prefer full network isolation (I like the full experience). These rules are not needed when using host-only/isolated interface + FakeNet.
 
