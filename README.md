@@ -1,29 +1,28 @@
 # mal-sandbox-kvm
+My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly for personal reference and lazy documentation, but I thought I'd share anyways
 
-my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainly for personal reference and lazy documentation, but i thought i'd share
-<br><br>
-(yes, i am aware that premade malware analysis VMs like [REMnux](https://remnux.org/) and [FLARE-VM](https://github.com/mandiant/flare-vm) exist, but they have a ton of tools i never touch and i thought it was fun to make my own 😅)
+(and yes, I am aware that premade RE/malware analysis VMs like [REMnux](https://remnux.org/) and [FLARE-VM](https://github.com/mandiant/flare-vm) exist, but I thought it was fun to make my own 😅)
 
 <br>
 
-## Hardware
+## System
 - Windows 11
 - 4 vCPUs
-- 6 GB Memory
-- 40 GB Storage
-- NAT Network Interface (Host-only/Isolated if using FakeNet)
+- 6 GB memory
+- 40 GB storage
+- NAT network interface (Host-only/Isolated if using FakeNet)
 
 <br>
 
 ## Analysis Tools
-### Static
+### Static/Code
 - [HxD](https://mh-nexus.de/en/hxd/)
 - [PEStudio](https://www.winitor.com/download)
 - [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
 
-### Dynamic/Network
+### Dynamic/Behavioural
 - [mitmproxy](https://www.mitmproxy.org/)
 - [Wireshark](https://www.wireshark.org/download.html)
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) [1]
@@ -38,9 +37,8 @@ my VM sanbox setup for static/dynamic analysis of Windows malware. this is mainl
 - [YARA](https://github.com/VirusTotal/yara)
 - [CAPA](https://github.com/mandiant/capa/releases)
 - [API Monitor](http://www.rohitab.com/apimonitor)
-- BinText
 - Python + RE libraries
-- 
+- PE Bear
 -->
 
 [1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
