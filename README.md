@@ -1,7 +1,20 @@
-# mal-sandbox-kvm
+# my-mal-sandbox
 My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly for personal reference and lazy documentation, but I thought I'd share anyways
 
 (and yes, I am aware that premade RE/malware analysis VMs like [REMnux](https://remnux.org/) and [FLARE-VM](https://github.com/mandiant/flare-vm) exist, but I thought it was fun to make my own 😅)
+
+<br>
+
+## Replication
+### Creating the VM Image W/ virsh
+Below is the virsh command used to create my VM image:
+
+    ...
+
+\* Obviously this is useless if you use another hypervisor (VMware, Virtual Box, etc.), but you can easily create one with the same hardware configurations shown below. 
+
+### Installing Tools
+Chocolately
 
 <br>
 
@@ -16,11 +29,11 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 ## Analysis Tools
 ### Static/Code
-- [HxD](https://mh-nexus.de/en/hxd/)
 - [PEStudio](https://www.winitor.com/download)
 - [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
+- [FLOSS](https://github.com/mandiant/flare-floss)
 
 ### Dynamic/Behavioural
 - [mitmproxy](https://www.mitmproxy.org/)
@@ -30,15 +43,18 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng) [2]
 
-
 <!--
-- [FLOSS](https://github.com/mandiant/flare-floss)
+to play with later ig
+- Volatility3
+- [HxD](https://mh-nexus.de/en/hxd/)
 - [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [YARA](https://github.com/VirusTotal/yara)
 - [CAPA](https://github.com/mandiant/capa/releases)
 - [API Monitor](http://www.rohitab.com/apimonitor)
 - Python + RE libraries
-- PE Bear
+- IDA Free
+- Radare2/Cutter
+- Binary Ninja
 -->
 
 [1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
@@ -48,7 +64,7 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 ## Setup
 ### Removing interference
-1. Follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to disable 
+1. Follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to disable Tamper Protection and annoying Windows Defender
 
 
 ### Network Isolation
@@ -81,10 +97,10 @@ Instead we want
 - Shared read-only folder
 
 ### Host --> VM
-fwefwef
+...
 
 ### VM --> Host
-wefwefwefwf
+...
 
 <br>
 
