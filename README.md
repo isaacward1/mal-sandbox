@@ -6,12 +6,11 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 <br>
 
 ## Replication
-### Creating the VM Image W/ virsh
-Below is the virsh command used to create my VM image:
+### Creating the VM Image
+**Note:** The following is intended for those using KVM/QEMU. If you use another hypervisor (VMware, Virtual Box, etc.), you can easily create one with the same hardware configurations shown [below](). 
+This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xml). To create an identical guest VM: 
 
-    ...
-
-\* Obviously this is useless if you use another hypervisor (VMware, Virtual Box, etc.), but you can easily create one with the same hardware configurations shown below. 
+    sudo virsh define mal-win11.xml
 
 ### Installing Tools
 Chocolately
@@ -20,10 +19,16 @@ Chocolately
 
 ## System
 - Windows 11
-- 4 vCPUs
-- 6 GB memory
-- 40 GB storage
-- NAT network interface (Host-only/Isolated if using FakeNet)
+- 4 vCPUs (1 socket, 2 cores, 2 threads)
+- 6 GB Memory
+- 50 GB Storage
+- Custom NAT network interface:
+    - Name: Isolated-NAT
+    - Mode: NAT   
+    - Subnet: 10.0.0.0/30
+    - Disable DHCP
+    - Disable IPv6
+- Host-only network interface
 
 <br>
 
@@ -55,6 +60,7 @@ to play with later ig
 - IDA Free
 - Radare2/Cutter
 - Binary Ninja
+- Malcat
 -->
 
 [1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
