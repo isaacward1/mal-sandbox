@@ -7,7 +7,8 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 ## Replication
 ### Creating the VM Image
-**Note:** The following is intended for those using KVM/QEMU. If you use another hypervisor (VMware, Virtual Box, etc.), you can easily create one with the same hardware configurations shown [below](). 
+**Note:** The following is intended for those using KVM/QEMU. If you use another hypervisor (VMware, VirtualBox, etc.), you can create a similar guest VM using the hardware configurations shown [below](https://github.com/isaacward1/my-mal-sandbox/blob/main/README.md#system).<br>
+
 This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xml). To create an identical guest VM: 
 
     sudo virsh define mal-win11.xml
