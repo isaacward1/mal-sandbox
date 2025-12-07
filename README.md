@@ -52,7 +52,7 @@ Chocolately
 <!--
 to play with later ig
 - Volatility3
-- [HxD](https://mh-nexus.de/en/hxd/)
+- [ImHex](https://github.com/WerWolv/ImHex)
 - [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [YARA](https://github.com/VirusTotal/yara)
 - [CAPA](https://github.com/mandiant/capa/releases)
