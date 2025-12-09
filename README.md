@@ -121,7 +121,7 @@ Instead we want
 
 2. On host's browser, navigate to `http://{vm-hostonly-ip}:{python server port}`
 
-### Using OpenSSH (alternative)
+### Using scp/OpenSSH (alternative)
 ...
 
 <br>
