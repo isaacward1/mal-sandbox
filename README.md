@@ -111,7 +111,7 @@ Instead we want
  
         python3 -m http.server --bind {host-only-gateway} {python server port}
 
-2. On guest's browser, naviagate to `http://{host-only-gateway}:{python server port}`
+2. On VM's browser, navigate to `http://{host-only-gateway}:{python server port}`
 
 #### Downloading from VM --> Host
 
