@@ -1,0 +1,32 @@
+﻿Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
+
+# change the variables below to match your desired setup
+$hostonly_mac = "52:54:00:9f:86:5b" # MAC address of your hostonly interface
+$hostonly_ip = "172.16.69.2" # IP you hostonly interface to have on the VM
+$hostonly_gateway = "172.16.69.1" # gateway IP of hostonly interface 
+$hostonly_subnet = 30 # subnet
+
+$nat_mac = "52:54:00:1a:a4:76" # MAC address of your NAT interface
+$nat_ip = "192.168.100.2" # IP you NAT interface to have on the VM
+$nat_gateway = "192.168.100.1" # gateway IP of NAT interface 
+$nat_subnet = 30 # subnet
+
+$hostonly_mac=$hostonly_mac.ToUpper().Replace(":", "-")
+$hostonly_adpt_idx = (Get-NetAdapter | select ifIndex, MacAddress | Where-Object {$_.MacAddress -eq $hostonly_mac}).ifIndex
+New-NetIPAddress -InterfaceIndex $hostonly_adpt_idx -IPAddress $hostonly_ip -PrefixLength $hostonly_subnet -DefaultGateway $hostonly_gateway
+Set-DnsClientServerAddress -InterfaceIndex $hostonly_adpt_idx -ServerAddresses $hostonly_gateway
+
+$nat_mac=$nat_mac.ToUpper().Replace(":", "-")
+$nat_adpt_idx = (Get-NetAdapter | select ifIndex, MacAddress | Where-Object {$_.MacAddress -eq $nat_mac}).ifIndex
+New-NetIPAddress -InterfaceIndex $nat_adpt_idx -IPAddress $nat_ip -PrefixLength $nat_subnet -DefaultGateway $nat_gateway
+Set-DnsClientServerAddress -InterfaceIndex $nat_adpt_idx -ServerAddresses $nat_gateway
+
+
+# $OpenSSH_Rule_Name=(Get-NetFirewallRule -Name "*OpenSSH*").Name
+# Set-NetFirewallRule -Name $OpenSSH_Rule_Name -RemoteAddress 172.16.100.0/24 -LocalPort 22222
+# New-Item -ItemType File -Path $env:USERPROFILE\.ssh\authorized_keys -Force
+# Restart-Service sshd
+
+$path_to_python = (Get-Command python).source
+New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Action Allow -Direction Inbound -LocalAddress $hostonly_ip -LocalPort 8888 -Protocol TCP -RemoteAddress $hostonly_gateway -Profile Any -Program $path_to_python
+Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False # redundant rule created by fakenet
