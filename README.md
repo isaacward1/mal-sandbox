@@ -23,13 +23,17 @@ Chocolately
 - 4 vCPUs (1 socket, 2 cores, 2 threads)
 - 6 GB Memory
 - 50 GB Storage
-- Custom NAT network interface:
-    - Name: Isolated-NAT
-    - Mode: NAT   
+- Custom host-only network interface:
+    - Name: mal-host-only
+    - Mode: host-only ('isolated' on virt-manager)
     - Subnet: 10.0.0.0/30
-    - Disable DHCP
-    - Disable IPv6
-- Host-only network interface
+    - Disable DHCP, IPv6
+- Custom NAT network interface:
+    - Name: mal-NAT
+    - Mode: NAT   
+    - Subnet: 10.0.69.0/30
+    - Disable DHCP, IPv6
+
 
 <br>
 
