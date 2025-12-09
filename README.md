@@ -72,22 +72,21 @@ to play with later ig
 ## Setup
 ### Removing interference
 1. Follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to disable Tamper Protection and annoying Windows Defender
-
+2. Disable everything in startup
 
 ### Network Isolation
 
-Below are firewall rules I have applied on both the host/guest machines (using a NATed VM network). They block communication with the host machine's LAN while allowing outbound traffic to the internet. Note that this is generally not recommended and most prefer full network isolation (I like the full experience). These rules are not needed when using host-only/isolated interface + FakeNet.
+Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the VM's python http server.
 
-### Host Firewall Rules (UFW)
+    sudo ufw allow out on <nat-interface> from any to <nat-gateway> comment 'allow to nat-gateway only (for internet access)'
+    sudo ufw deny out on <nat-interface> from any to any comment 'isolate mal-nat'
+    sudo ufw allow in on <hostonly-interface> from <vm-hostonly-ip> to <hostonly-gateway> port <python http server port> proto tcp comment 'http.server host-only'
 
-    sudo ufw allow out on <vm-interface> from any to <vm-gateway-ip> comment 'allow to internet'
-    sudo ufw deny out on <vm-interface> from any to any comment 'isolated'
-
-\* Replace \<vm-interface\> with the name of VM's NAT interface and \<vm-gateway-ip\> with the IP of that interface.
-
-### Guest Firewall Rules (Windows Firewall)
-
-    Windows Firewall Rules Here
+**\<nat-interface\>** - name of VM's NAT interface<br>
+**\<nat-gateway\>** - NAT interface's gateway IP<br>
+**\<hostonly-interface\>** - name of VM's host-only interface<br>
+**\<vm-hostonly-ip\>** - host IP assigned to VM on host-only network<br>
+**\<hostonly-gateway\>** - host-only interface's gateway IP
 
 <br>
 
