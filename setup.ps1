@@ -4,12 +4,12 @@
 $hostonly_mac = "xx:xx:xx:xx:xx:xx" # MAC address of your host-only interface
 $hostonly_ip = "172.16.69.2" # IP you want VM to have on the host-only network
 $hostonly_gateway = "172.16.69.1" # gateway IP of host-only interface 
-$hostonly_subnet = 30 # subnet
+$hostonly_subnet = 30 # subnet prefix length for host-only adapter
 
 $nat_mac = "xx:xx:xx:xx:xx:xx" # MAC address of your NAT interface
 $nat_ip = "192.168.100.2" # IP you want VM to have on the NAT network
 $nat_gateway = "192.168.100.1" # gateway IP of NAT interface 
-$nat_subnet = 30 # subnet
+$nat_subnet = 30 # subnet prefix length for NAT adapter
 # ========================================================================= #
 
 # configuring host-only adapter
@@ -33,4 +33,5 @@ New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Act
 
 # disabling redundant rule created by fakenet
 Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
+
 
