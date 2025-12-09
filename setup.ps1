@@ -1,13 +1,13 @@
 ﻿Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
 
 # =========== change these variables to match your desired setup =========== #
-$hostonly_mac = "52:54:00:9f:86:5b" # MAC address of your hostonly interface
-$hostonly_ip = "172.16.69.2" # IP you hostonly interface to have on the VM
-$hostonly_gateway = "172.16.69.1" # gateway IP of hostonly interface 
+$hostonly_mac = "xx:xx:xx:xx:xx:xx" # MAC address of your host-only interface
+$hostonly_ip = "172.16.69.2" # IP you want VM to have on the host-only network
+$hostonly_gateway = "172.16.69.1" # gateway IP of host-only interface 
 $hostonly_subnet = 30 # subnet
 
-$nat_mac = "52:54:00:1a:a4:76" # MAC address of your NAT interface
-$nat_ip = "192.168.100.2" # IP you NAT interface to have on the VM
+$nat_mac = "xx:xx:xx:xx:xx:xx" # MAC address of your NAT interface
+$nat_ip = "192.168.100.2" # IP you want VM to have on the NAT network
 $nat_gateway = "192.168.100.1" # gateway IP of NAT interface 
 $nat_subnet = 30 # subnet
 # ========================================================================= #
@@ -33,3 +33,4 @@ New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Act
 
 # disabling redundant rule created by fakenet
 Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
+
