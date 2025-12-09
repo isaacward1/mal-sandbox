@@ -47,10 +47,11 @@ Chocolately
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) [1]
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
-- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng) [2]
+- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
 
 <!--
-to play with later ig
+to add later maybe
+- 7zip
 - Volatility3
 - [ImHex](https://github.com/WerWolv/ImHex)
 - [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
@@ -65,7 +66,6 @@ to play with later ig
 -->
 
 [1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
-[2] I don't personally use this, but it is recommended if you do not understand the risks of using bridged/NATed VM interfaces
 
 <br>
 
@@ -78,15 +78,15 @@ to play with later ig
 
 Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the VM's python http server.
 
-    sudo ufw allow out on <nat-interface> from any to <nat-gateway> comment 'allow to nat-gateway only (for internet access)'
-    sudo ufw deny out on <nat-interface> from any to any comment 'isolate mal-nat'
-    sudo ufw allow in on <hostonly-interface> from <vm-hostonly-ip> to <hostonly-gateway> port <python http server port> proto tcp comment 'http.server host-only'
+    sudo ufw allow out on {nat-interface} from any to {nat-gateway} comment 'allow to nat-gateway only (for internet access)'
+    sudo ufw deny out on {nat-interface} from any to any comment 'isolate mal-nat'
+    sudo ufw allow in on {hostonly-interface} from {vm-hostonly-ip} to {hostonly-gateway} port {python http server port} proto tcp comment 'http.server host-only'
 
-**\<nat-interface\>** - name of VM's NAT interface<br>
-**\<nat-gateway\>** - NAT interface's gateway IP<br>
-**\<hostonly-interface\>** - name of VM's host-only interface<br>
-**\<vm-hostonly-ip\>** - host IP assigned to VM on host-only network<br>
-**\<hostonly-gateway\>** - host-only interface's gateway IP
+**{nat-interface}** --- name of VM's NAT interface<br>
+**{nat-gateway}** --- NAT interface's gateway IP<br>
+**{hostonly-interface}** --- name of VM's host-only interface<br>
+**{vm-hostonly-ip}** --- host IP assigned to VM on host-only network<br>
+**{hostonly-gateway}** --- host-only interface's gateway IP
 
 <br>
 
@@ -102,16 +102,32 @@ Instead we want
 - possibly a lightweight vm or container that is dedicated to uploading and downloading files.
 - Shared read-only folder
 
-### Host --> VM
-...
 
-### VM --> Host
+### Using Python [http.server](https://docs.python.org/3/library/http.server.html#)
+
+#### Uploading from Host --> VM
+
+1. Run on host to serve malware to VM:
+ 
+        python3 -m http.server --bind {host-only-gateway} {python server port}
+
+2. On guest's browser, naviagate to `http://{host-only-gateway}:{python server port}`
+
+#### Downloading from VM --> Host
+
+1. Run on VM to download files to host:
+
+        python3 -m http.server --bind {vm-hostonly-ip} {python server port}
+
+2. On host's browser, navigate to `http://{vm-hostonly-ip}:{python server port}`
+
+### Using OpenSSH (alternative)
 ...
 
 <br>
 
 ## Tips
-- When everything is to your liking, take a snapshot so that you can revert to a clean state after detonating malware.
-- Make sure all qemu and kvm 
+- When everything is to your liking, take a snapshot so that you can revert to a clean state after detonating malware
+- Before executing malicious software, make sure all hypervisor software is up to date with the latest security patches applied
 
 <br>
