@@ -1,4 +1,4 @@
-﻿Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
+﻿Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # =========== change these variables to match your desired setup =========== #
 $hostonly_mac = "xx:xx:xx:xx:xx:xx" # MAC address of your host-only interface
@@ -33,5 +33,21 @@ New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Act
 
 # disabling redundant rule created by fakenet
 Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
+
+# installing Chocolatey
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+# installing tools via Chocolatey
+$tools = @(
+  'pestudio', 'imhex', 'x64dbg.portable', 'ghidra', 
+  'cyberchef', 'floss', 'die', 'capa', 'wireshark', 
+  'mitmproxy', 'sysinternals', 'systeminformer', 
+  'regshot', 'fakenet', 'python', 'upx', '7zip'
+)
+foreach ($tool in $tools) {
+  choco install $tool -y
+}
+
 
 
