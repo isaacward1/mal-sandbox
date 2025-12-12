@@ -40,33 +40,39 @@ Chocolately
 ## Analysis Tools
 ### Static/Code
 - [PEStudio](https://www.winitor.com/download)
+- [ImHex](https://github.com/WerWolv/ImHex)
 - [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
 - [FLOSS](https://github.com/mandiant/flare-floss)
+- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
+- [CAPA](https://github.com/mandiant/capa/releases)
 
 ### Dynamic/Behavioural
-- [mitmproxy](https://www.mitmproxy.org/)
 - [Wireshark](https://www.wireshark.org/download.html)
+- [mitmproxy](https://www.mitmproxy.org/)
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) [1]
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
 
+### Other
+- [Python](https://www.python.org/downloads/)
+- [UPX](https://github.com/upx/upx)
+- [7-Zip](https://www.7-zip.org/)
+
+
+
 <!--
 to add later maybe
-- 7zip
-- Volatility3
-- [ImHex](https://github.com/WerWolv/ImHex)
-- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [YARA](https://github.com/VirusTotal/yara)
-- [CAPA](https://github.com/mandiant/capa/releases)
 - [API Monitor](http://www.rohitab.com/apimonitor)
 - Python + RE libraries
 - IDA Free
 - Radare2/Cutter
 - Binary Ninja
 - Malcat
+- Volatility3
 -->
 
 [1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
