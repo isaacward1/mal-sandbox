@@ -14,7 +14,7 @@ This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xm
     sudo virsh define mal-win11.xml
 
 ### Installing Tools
-Chocolately
+Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), but can be installed manually per [links below](https://github.com/isaacward1/mal-sandbox/edit/main/README.md#analysis-tools)
 
 <br>
 
@@ -34,24 +34,24 @@ Chocolately
     - Subnet: 10.0.69.0/30
     - Disable DHCP, IPv6
 
-
 <br>
 
 ## Analysis Tools
 ### Static/Code
 - [PEStudio](https://www.winitor.com/download)
 - [ImHex](https://github.com/WerWolv/ImHex)
-- [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
 - [FLOSS](https://github.com/mandiant/flare-floss)
 - [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [CAPA](https://github.com/mandiant/capa/releases)
+- [YARA](https://github.com/VirusTotal/yara)
 
 ### Dynamic/Behavioural
+- [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Wireshark](https://www.wireshark.org/download.html)
 - [mitmproxy](https://www.mitmproxy.org/)
-- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) [1]
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) (TCPView, Procmon, Autoruns, Strings)
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
@@ -61,21 +61,13 @@ Chocolately
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
-
-
 <!--
-to add later maybe
-- [YARA](https://github.com/VirusTotal/yara)
-- [API Monitor](http://www.rohitab.com/apimonitor)
-- Python + RE libraries
 - IDA Free
-- Radare2/Cutter
+- Cutter
 - Binary Ninja
 - Malcat
 - Volatility3
 -->
-
-[1] TCPView, Procmon, Process Explorer, Autoruns, and Strings <br>
 
 <br>
 
@@ -101,17 +93,12 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 <br>
 
 ## File Transfer
-
-Observing past VM escapes it is clear that we do not want:
-- Shared clipboard
-- Shared folders (read/write)
+Avoid:
+- 
+- 
 - Drag-and-drop
 - USB Redirection
-
-Instead we want
-- possibly a lightweight vm or container that is dedicated to uploading and downloading files.
-- Shared read-only folder
-
+Disable these features
 
 ### Using Python [http.server](https://docs.python.org/3/library/http.server.html#)
 
@@ -131,13 +118,16 @@ Instead we want
 
 2. On host's browser, navigate to `http://{vm-hostonly-ip}:{python server port}`
 
-### Using scp/OpenSSH (alternative)
-...
+### Alternatives
+- Hardened scp/OpenSSH
+- read-only shared folder
+- Dedicated lightweight VM or container for uploading and downloading files to/from sandbox VM
 
 <br>
 
 ## Tips
 - When everything is to your liking, take a snapshot so that you can revert to a clean state after detonating malware
+- Avoid using shared clipboard, shared folder (read and write)
 - Before executing malicious software, make sure all hypervisor software is up to date with the latest security patches applied
 
 <br>
