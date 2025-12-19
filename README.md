@@ -50,16 +50,16 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 ### Dynamic/Behavioural
 - [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Wireshark](https://www.wireshark.org/download.html)
-- [mitmproxy](https://www.mitmproxy.org/)
+- [mitmproxy](https://www.mitmproxy.org/) (mitmweb)
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) (TCPView, Procmon, Autoruns, Strings)
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
-- [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
+- [FakeNet](https://github.com/mandiant/flare-fakenet-ng)
 
 ### Other
 - [VSCode](https://code.visualstudio.com/)
-- [Python](https://www.python.org/downloads/)
-- [Temurin JDK](https://adoptium.net/temurin/releases)
+- [Python](https://www.python.org/downloads/) (v3.14)
+- [Temurin JDK](https://adoptium.net/temurin/releases) (21.0.x)
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
