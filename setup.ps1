@@ -33,6 +33,9 @@ write-host "installing Chocolatey..."
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
 iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+Install-Module -Name DisplaySettings
+Set-DisplayResolution -Width 1920 -Height 1080
+
 # installing tools via Chocolatey
 write-host "installing tools..."
 $tools = @(
@@ -55,4 +58,5 @@ write-host "Disabling stupid fw rule..."
 Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
 
 write-host "Done!"
+
 
