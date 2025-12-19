@@ -57,7 +57,9 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 - [FakeNet-NG](https://github.com/mandiant/flare-fakenet-ng)
 
 ### Other
+- [VSCode](https://code.visualstudio.com/)
 - [Python](https://www.python.org/downloads/)
+- [Temurin JDK](https://adoptium.net/temurin/releases)
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
