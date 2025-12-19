@@ -19,7 +19,7 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 <br>
 
 ## System
-- Windows 11
+- Windows 10
 - 4 vCPUs (1 socket, 2 cores, 2 threads)
 - 6 GB Memory
 - 50 GB Storage
