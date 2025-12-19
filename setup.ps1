@@ -28,15 +28,6 @@ $nat_adpt_idx = (Get-NetAdapter | select ifIndex, MacAddress | Where-Object {$_.
 New-NetIPAddress -InterfaceIndex $nat_adpt_idx -IPAddress $nat_ip -PrefixLength $nat_subnet -DefaultGateway $nat_gateway
 Set-DnsClientServerAddress -InterfaceIndex $nat_adpt_idx -ServerAddresses $nat_gateway
 
-# allow host machine to access python server
-write-host "Creating firewall rule to allow host to access python server..."
-$path_to_python = (Get-Command python).source
-New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Action Allow -Direction Inbound -LocalAddress $hostonly_ip -LocalPort $http_server_port -Protocol TCP -RemoteAddress $hostonly_gateway -Profile Any -Program $path_to_python
-
-# disabling redundant rule created by fakenet
-write-host "Disabling stupid fw rule..."
-Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
-
 # installing Chocolatey
 write-host "installing Chocolatey..."
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
@@ -54,4 +45,14 @@ foreach ($tool in $tools) {
   choco install $tool -y
 }
 
+# allow host machine to access python server
+write-host "Creating firewall rule to allow host to access python server..."
+$path_to_python = (Get-Command python).source
+New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Action Allow -Direction Inbound -LocalAddress $hostonly_ip -LocalPort $http_server_port -Protocol TCP -RemoteAddress $hostonly_gateway -Profile Any -Program $path_to_python
+
+# disabling redundant rule created by fakenet
+write-host "Disabling stupid fw rule..."
+Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False
+
 write-host "Done!"
+
