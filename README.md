@@ -1,12 +1,10 @@
 # mal-sandbox
-My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly for personal reference and lazy documentation, but I thought I'd share anyways
-
-(and yes, I am aware that premade RE/malware analysis VMs like [REMnux](https://remnux.org/) and [FLARE-VM](https://github.com/mandiant/flare-vm) exist, but I thought it was fun to make my own 😅)
+My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly for personal reference and half-assed documentation 🤷‍♂️
 
 <br>
 
 ## Replication
-### Creating the VM Image
+### Creating the Image
 
 > [!NOTE]
 > The following is intended for libvirt-based virtualization. If you use another VM manager or hypervisor (VMware, VirtualBox, etc.), you can still create a similar guest VM using the hardware configurations shown [below](https://github.com/isaacward1/my-mal-sandbox/blob/main/README.md#system).
@@ -15,14 +13,14 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xml). To create an identical guest VM: 
 
-    sudo virsh define mal-win11.xml
+    sudo virsh define mal-win10.xml
 
 ### Installing VirtIO Driver
 1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
 ### Installing Tools
-Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), but can be installed manually per [links below](https://github.com/isaacward1/mal-sandbox/edit/main/README.md#analysis-tools)
+Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/edit/main/README.md#analysis-tools)
 
 <br>
 
@@ -33,13 +31,13 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 - 50 GB Storage
 - Custom host-only network interface:
     - Name: mal-host-only
-    - Mode: host-only ('isolated' on virt-manager)
+    - Mode: host-only
     - Subnet: 10.0.0.0/30
     - Disable DHCP, IPv6
 - Custom NAT network interface:
     - Name: mal-NAT
     - Mode: NAT   
-    - Subnet: 10.0.69.0/30
+    - Subnet: 10.69.69.0/30
     - Disable DHCP, IPv6
 
 <br>
@@ -65,6 +63,7 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 - [FakeNet](https://github.com/mandiant/flare-fakenet-ng)
 
 ### Other
+- [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5)
 - [VSCode](https://code.visualstudio.com/)
 - [Python](https://www.python.org/downloads/) (v3.14)
 - [Temurin JDK](https://adoptium.net/temurin/releases) (v21.0)
@@ -73,10 +72,10 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 
 <!--
 - IDA Free
-- Cutter
-- Binary Ninja
 - Malcat
+- Binary Ninja
 - Volatility3
+- Cutter
 -->
 
 <br>
@@ -88,7 +87,7 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 
 ### Network Isolation
 
-Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the VM's python http server.
+Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server. Replace all variable values to align with desired setup.
 
     var1="<NAT-interface>" # name of VM's NAT interface
     var2="<NAT-gateway>" # NAT interface's gateway IP
@@ -100,8 +99,6 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
     sudo ufw allow out on $var1 from any to $var2 comment 'mal-fw-rule1' # allow to NAT-gateway only (for internet access)
     sudo ufw deny out on $var1 from any to any comment 'mal-fw-rule2' # Isolate mal-NAT
     sudo ufw allow in on $var3 from $var4 to $var5 port $var6 proto tcp comment 'mal-fw-rule3' # python http.server host-only
-
-
 
 <br>
 
@@ -136,6 +133,7 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 ## Tips
 - After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware
 - Avoid using shared clipboard, shared folders (read/write), Drag-and-drop, and USB storage passthrough/redirection. These are common vectors for VM escape.
-- Before executing malicious software, make sure all hypervisor software is up to date with the latest security patches applied
+- Before executing malware, make sure all hypervisor software is up to date with the latest security patches applied
+- Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/)
 
 <br>
