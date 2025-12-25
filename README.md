@@ -20,7 +20,7 @@ This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xm
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
 ### Installing Tools
-Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/edit/main/README.md#analysis-tools)
+Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools)
 
 <br>
 
