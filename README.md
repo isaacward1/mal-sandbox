@@ -110,30 +110,30 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 
 1. Run on host to serve malware to VM:
  
-        python3 -m http.server --bind {host-only-gateway} {python server port}
+        python3 -m http.server --bind <host-only-gateway> <python server port>
 
-2. On VM's browser, navigate to `http://{host-only-gateway}:{python server port}`
+2. On VM's browser, navigate to `http://<host-only-gateway>:<python server port>`
 
 #### Downloading from VM --> Host
 
 1. Run on VM to download files to host:
 
-        python3 -m http.server --bind {vm-hostonly-ip} {python server port}
+        python3 -m http.server --bind <vm-hostonly-ip> <python server port>
 
-2. On host's browser, navigate to `http://{vm-hostonly-ip}:{python server port}`
+2. On host's browser, navigate to `http://<vm-hostonly-ip>:<python server port>`
 
 ### Alternatives
 - Hardened scp/OpenSSH
-- read-only shared folder
 - Dedicated lightweight VM or container for uploading and downloading files to/from VM
+- Read-only shared folder
 - Downloading malware onto VM from online DBs (temporary internet)
 
 <br>
 
 ## Tips
-- After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware
+- After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware.
 - Avoid using shared clipboard, shared folders (read/write), Drag-and-drop, and USB storage passthrough/redirection. These are common vectors for VM escape.
-- Before executing malware, make sure all hypervisor software is up to date with the latest security patches applied
-- Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/)
+- Before executing malware, make sure all hypervisor software is up to date with the latest security patches applied.
+- Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
 
 <br>
