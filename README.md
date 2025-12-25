@@ -7,11 +7,19 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 ## Replication
 ### Creating the VM Image
-**Note:** The following is intended for those using KVM/QEMU. If you use another hypervisor (VMware, VirtualBox, etc.), you can create a similar guest VM using the hardware configurations shown [below](https://github.com/isaacward1/my-mal-sandbox/blob/main/README.md#system).<br>
+
+> [!NOTE]
+> The following is intended for libvirt-based virtualization. If you use another VM manager or hypervisor (VMware, VirtualBox, etc.), you can still create a similar guest VM using the hardware configurations shown [below](https://github.com/isaacward1/my-mal-sandbox/blob/main/README.md#system).
+<br>
+
 
 This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xml). To create an identical guest VM: 
 
     sudo virsh define mal-win11.xml
+
+### Installing VirtIO Driver
+1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
+2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
 ### Installing Tools
 Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), but can be installed manually per [links below](https://github.com/isaacward1/mal-sandbox/edit/main/README.md#analysis-tools)
@@ -37,7 +45,7 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 <br>
 
 ## Analysis Tools
-### Static/Code
+### Static
 - [PEStudio](https://www.winitor.com/download)
 - [ImHex](https://github.com/WerWolv/ImHex)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
@@ -47,10 +55,10 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 - [CAPA](https://github.com/mandiant/capa/releases)
 - [YARA](https://github.com/VirusTotal/yara)
 
-### Dynamic/Behavioural
+### Dynamic
 - [x64dbg](https://github.com/x64dbg/x64dbg)
 - [Wireshark](https://www.wireshark.org/download.html)
-- [mitmproxy](https://www.mitmproxy.org/) (mitmweb)
+- [mitmproxy](https://www.mitmproxy.org/)
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) (TCPView, Procmon, Autoruns, Strings)
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
@@ -59,7 +67,7 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 ### Other
 - [VSCode](https://code.visualstudio.com/)
 - [Python](https://www.python.org/downloads/) (v3.14)
-- [Temurin JDK](https://adoptium.net/temurin/releases) (21.0.x)
+- [Temurin JDK](https://adoptium.net/temurin/releases) (v21.0)
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
@@ -82,25 +90,22 @@ Tools are installed via Chocolately packages (refer to [setup.ps1](setup.ps1)), 
 
 Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the VM's python http server.
 
-    sudo ufw allow out on {nat-interface} from any to {nat-gateway} comment 'allow to nat-gateway only (for internet access)'
-    sudo ufw deny out on {nat-interface} from any to any comment 'isolate mal-nat'
-    sudo ufw allow in on {hostonly-interface} from {vm-hostonly-ip} to {hostonly-gateway} port {python http server port} proto tcp comment 'http.server host-only'
+    var1="<NAT-interface>" # name of VM's NAT interface
+    var2="<NAT-gateway>" # NAT interface's gateway IP
+    var3="<host-only-interface>" # name of VM's host-only interface
+    var4="<vm-host-only-ip>" # host IP assigned to VM on host-only network
+    var5="<host-only-gateway>" # host-only interface's gateway IP
+    var6="<python http.server port>" # python http.server port
+    
+    sudo ufw allow out on $var1 from any to $var2 comment 'mal-fw-rule1' # allow to NAT-gateway only (for internet access)
+    sudo ufw deny out on $var1 from any to any comment 'mal-fw-rule2' # Isolate mal-NAT
+    sudo ufw allow in on $var3 from $var4 to $var5 port $var6 proto tcp comment 'mal-fw-rule3' # python http.server host-only
 
-**{nat-interface}** --- name of VM's NAT interface<br>
-**{nat-gateway}** --- NAT interface's gateway IP<br>
-**{hostonly-interface}** --- name of VM's host-only interface<br>
-**{vm-hostonly-ip}** --- host IP assigned to VM on host-only network<br>
-**{hostonly-gateway}** --- host-only interface's gateway IP
+
 
 <br>
 
 ## File Transfer
-Avoid:
-- 
-- 
-- Drag-and-drop
-- USB Redirection
-Disable these features
 
 ### Using Python [http.server](https://docs.python.org/3/library/http.server.html#)
 
@@ -123,13 +128,14 @@ Disable these features
 ### Alternatives
 - Hardened scp/OpenSSH
 - read-only shared folder
-- Dedicated lightweight VM or container for uploading and downloading files to/from sandbox VM
+- Dedicated lightweight VM or container for uploading and downloading files to/from VM
+- Downloading malware onto VM from online DBs (temporary internet)
 
 <br>
 
 ## Tips
-- When everything is to your liking, take a snapshot so that you can revert to a clean state after detonating malware
-- Avoid using shared clipboard, shared folder (read and write)
+- After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware
+- Avoid using shared clipboard, shared folders (read/write), Drag-and-drop, and USB storage passthrough/redirection. These are common vectors for VM escape.
 - Before executing malicious software, make sure all hypervisor software is up to date with the latest security patches applied
 
 <br>
