@@ -11,7 +11,12 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 <br>
 
 
-This is the XML config file for my KVM/QEMU VM 👉 [mal-win11.xml](mal-win11.xml). To create an identical guest VM: 
+These are the libvirt XML files for replicating my KVM/QEMU VM and networks
+    - [mal-win10.xml](mal-win10.xml)
+    - [mal-NAT]()
+    - [mal-host-only]()
+    
+    To create an identical guest VM: 
 
     sudo virsh define mal-win10.xml
 
