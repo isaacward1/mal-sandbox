@@ -11,16 +11,18 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 <br>
 
 
-These are the libvirt XML files for replicating my KVM/QEMU VM and networks
-    - [mal-win10.xml](mal-win10.xml)
-    - [mal-NAT]()
-    - [mal-host-only]()
+These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
+- [mal-win10.xml](mal-win10.xml)
+- [mal-NAT.xml](mal-NAT.xml)
+- [mal-host-only.xml](mal-host-only.xml)
     
-    To create an identical guest VM: 
+To create an identical guest VM: 
 
     sudo virsh define mal-win10.xml
+    sudo virsh net-define mal-NAT.xml
+    sudo virsh net-define mal-host-only.xml
 
-### Installing VirtIO Driver
+### Installing VirtIO
 1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
@@ -94,16 +96,17 @@ Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), bu
 
 Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server. Replace all variable values to align with desired setup.
 
-    var1="<NAT-interface>" # name of VM's NAT interface
-    var2="<NAT-gateway>" # NAT interface's gateway IP
-    var3="<host-only-interface>" # name of VM's host-only interface
-    var4="<vm-host-only-ip>" # host IP assigned to VM on host-only network
-    var5="<host-only-gateway>" # host-only interface's gateway IP
+    var1="<NAT-interface>" # name of VM's NAT bridge
+    var2="<NAT-gateway-ip>" # NAT interface's gateway IP
+    var3="<host-only-interface>" # name of VM's host-only brige
+    var4="<host-only-gateway-ip>" # host-only interface's gateway IP
+    var5="<host-only-ip-on-vm>" # host IP assigned to VM on host-only network
     var6="<python http.server port>" # python http.server port
     
-    sudo ufw allow out on $var1 from any to $var2 comment 'mal-fw-rule1' # allow to NAT-gateway only (for internet access)
-    sudo ufw deny out on $var1 from any to any comment 'mal-fw-rule2' # Isolate mal-NAT
-    sudo ufw allow in on $var3 from $var4 to $var5 port $var6 proto tcp comment 'mal-fw-rule3' # python http.server host-only
+    sudo ufw allow out on $var1 from any to $var2 comment '(mal) allow to NAT-gateway only (for internet access)'
+    sudo ufw deny out on $var1 from any to any comment '(mal) Isolate mal-NAT'
+    sudo ufw allow in on $var3 from $var5 to $var4 port $var6 proto tcp comment '(mal) allow to host python http.server'
+    sudo ufw deny out on $var3 from any to any comment '(mal) Isolate mal-host-only'
 
 <br>
 
