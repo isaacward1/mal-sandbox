@@ -18,10 +18,12 @@ These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
     
 To create an identical guest VM: 
 
-    sudo virsh define mal-win10.xml
-    # verifiy disk 'source' path is correct (default: /var/lib/libvirt/images/*.qcow2)
     sudo virsh net-define mal-NAT.xml
     sudo virsh net-define mal-host-only.xml
+    sudo virsh define mal-win10.xml
+
+> [!NOTE]
+> replace  disk 'PATH_TO_DISK_IMAGE' in [mal-win10.xml](mal-win10.xml) with the path to a valid qcow2 image file (default: /var/lib/libvirt/images/\<disk name\>.qcow2)
 
 ### Installing VirtIO
 1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
