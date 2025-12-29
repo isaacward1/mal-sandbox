@@ -1,0 +1,17 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit mal-NAT
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>mal-NAT</name>
+  <uuid>facd93b6-1730-4fbd-8ee4-11ce2b0b5b02</uuid>
+  <forward mode='nat'/>
+  <bridge name='virbr5' stp='on' delay='0'/>
+  <mac address='52:54:00:ac:f6:50'/>
+  <domain name='mal-NAT'/>
+  <ip address='10.69.69.1' netmask='255.255.255.252'>
+  </ip>
+</network>
