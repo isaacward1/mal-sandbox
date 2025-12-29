@@ -19,6 +19,7 @@ These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
 To create an identical guest VM: 
 
     sudo virsh define mal-win10.xml
+    # verifiy disk 'source' path is correct (default: /var/lib/libvirt/images/*.qcow2)
     sudo virsh net-define mal-NAT.xml
     sudo virsh net-define mal-host-only.xml
 
