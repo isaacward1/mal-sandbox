@@ -124,9 +124,9 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 
 1. Run on host to serve malware to VM:
  
-        python3 -m http.server --bind <host-only-gateway> <python server port>
+        python3 -m http.server -d /path/to/served/dir --bind <host-only-gateway> <python server port>
 
-2. On VM's browser, navigate to `http://<host-only-gateway>:<python server port>`
+3. On VM's browser, navigate to `http://<host-only-gateway>:<python server port>`
 
 #### Downloading from VM --> Host
 
@@ -148,6 +148,8 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 - After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware.
 - Avoid using shared clipboard, shared folders (read/write), Drag-and-drop, and USB storage passthrough/redirection. These are common vectors for VM escape.
 - Before executing malware, make sure all hypervisor software is up to date with the latest security patches applied.
+- Use bash alias for python server<br>
+  Ex: `alias pyserver='python3 -m http.server -d ~/Downloads/mal-win10 --bind 10.0.0.1 8888'`
 - Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
 
 <br>
