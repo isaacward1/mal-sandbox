@@ -103,8 +103,8 @@ $path_to_python = (Get-Command python).source
 New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Action Allow -Direction Inbound -LocalAddress $hostonly_ip -LocalPort $http_server_port -Protocol TCP -RemoteAddress $hostonly_gateway -Profile Any -Program $path_to_python
 
 # disabling redundant rule created by fakenet
-write-host "Disabling stupid fw rule..."
-Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False -ErrorAction SilentlyContinue
+# write-host "Disabling stupid fw rule..."
+# Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False -ErrorAction SilentlyContinue
 
 # explorer config
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\" -Name Hidden -Value 1
@@ -117,6 +117,7 @@ Stop-Process -ProcessName explorer -Force
 Disable-NetAdapter -Name $nat_adpt.Name -Confirm:$False
 
 # setting proxy for mitmproxy
+Write-Host "setting proxy for mitmproxy on (127.0.0.1:8080)..."
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value 1
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyServer -Value "127.0.0.1:8080"
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyOverride -Value 10.0.0.1
@@ -132,4 +133,5 @@ Restart-Computer -Force
 3. disable all startup apps
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
+
 #>
