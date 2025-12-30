@@ -99,12 +99,12 @@ Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), bu
 
 Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server. Replace all variable values to align with desired setup.
 
-    var1="<NAT-interface>" # name of VM's NAT bridge
-    var2="<NAT-gateway-ip>" # NAT interface's gateway IP
-    var3="<host-only-interface>" # name of VM's host-only brige
-    var4="<host-only-gateway-ip>" # host-only interface's gateway IP
-    var5="<host-only-ip-on-vm>" # host IP assigned to VM on host-only network
-    var6="<python http.server port>" # python http.server port
+    var1="mal-NAT-br"   # name of VM's NAT bridge/gateway
+    var2="172.16.20.1"  # NAT bridge/gateway IP
+    var3="mal-ho-br"    # name of VM's host-only bridge
+    var4="10.0.0.1"     # host-only interface's gateway IP
+    var5="10.0.0.2"     # host IP assigned to VM on host-only network
+    var6="8888"         # python http.server port
     
     sudo ufw allow out on $var1 from any to $var2 comment '(mal) allow to NAT-gateway only (for internet access)'
     sudo ufw deny out on $var1 from any to any comment '(mal) Isolate mal-NAT'
