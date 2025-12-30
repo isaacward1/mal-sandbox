@@ -29,7 +29,7 @@ To create an identical guest VM:
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
 > [!NOTE]
-> if you encounter heavy pixelation and screen tearing during/after boot, disable opengl/3d acceleration temporarily, install this driver, then reenable.
+> if encountering heavy pixelation and screen tearing during/after boot, disable opengl/3d acceleration temporarily, install this driver, then reenable.
 
 ### Setup.ps1
 This [script](setup.ps1) automates the configuration of several system/network settings and necessary performance tweaks. Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools). Things to change manually are listed at the bottom cuz powershell is trash
