@@ -36,6 +36,16 @@ Write-Host "choose [1] HWID, then go back and [0] to exit"
 Start-Sleep 5
 irm https://get.activated.win | iex
 
+# performance settings
+$fxpath = "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects"
+Set-ItemProperty -Path $fxpath -Name VisualFXSetting -Value 3
+get-childitem $fxpath | Set-ItemProperty -Name DefaultApplied -Value 0
+Set-ItemProperty -Path "$fxpath\FontSmoothing" -Name DefaultApplied -Value 1
+
+powercfg /setactive a1841308-3541-4fab-bc81-f71556f20b4a
+powercfg /setdcvalueindex a1841308-3541-4fab-bc81-f71556f20b4a 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 600
+powercfg /setacvalueindex a1841308-3541-4fab-bc81-f71556f20b4a 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 600
+
 # creating and adding defender exclusions for desktop folders
 $tools_folder = "$env:userprofile\Desktop\tools"
 $mal_folder = "$env:userprofile\Desktop\mal"
@@ -133,5 +143,4 @@ Restart-Computer -Force
 3. disable all startup apps
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
-
 #>
