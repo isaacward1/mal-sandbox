@@ -107,8 +107,9 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
     var6="8888"         # python http.server port
     
     sudo ufw allow out on $var1 from any to $var2 comment '(mal) allow to NAT-gateway only (for internet access)'
-    sudo ufw deny out on $var1 from any to any comment '(mal) Isolate mal-NAT'
     sudo ufw allow in on $var3 from $var5 to $var4 port $var6 proto tcp comment '(mal) allow to host python http.server'
+    sudo ufw allow out on $var3 from $var4 to $var5 port $var6 proto tcp comment '(mal) allow to guest python http.server'
+    sudo ufw deny out on $var1 from any to any comment '(mal) Isolate mal-NAT'
     sudo ufw deny out on $var3 from any to any comment '(mal) Isolate mal-host-only'
 
 <br>
