@@ -4,11 +4,10 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 <br>
 
 ## Replication
-### Creating the Image
+### Defining Guest / Interfaces
 
 > [!NOTE]
 > The following is intended for libvirt-based virtualization. If you use another VM manager or hypervisor (VMware, VirtualBox, etc.), you can still create a similar guest VM using the hardware configurations shown [below](https://github.com/isaacward1/my-mal-sandbox/blob/main/README.md#system).
-<br>
 
 
 These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
@@ -28,6 +27,9 @@ To create an identical guest VM:
 ### Installing VirtIO
 1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
+
+> [!NOTE]
+> if you encounter heavy pixelation and screen tearing during/after boot, disable opengl/3d acceleration temporarily, install this driver, then reenable.
 
 ### Setup.ps1
 This [script](setup.ps1) automates the configuration of several system/network settings and necessary performance tweaks. Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools). Things to change manually are listed at the bottom cuz powershell is trash
