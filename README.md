@@ -29,8 +29,8 @@ To create an identical guest VM:
 1. Download the latest [virtio-win](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso) driver
 2. Follow these [instructions](https://pve.proxmox.com/wiki/Windows_VirtIO_Drivers#Using_the_ISO)
 
-### Installing Tools
-Tools are installed via Chocolately packages (review [setup.ps1](setup.ps1)), but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools)
+### Setup.ps1
+This [script](setup.ps1) automates the configuration of several system/network settings and necessary performance tweaks. Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools).
 
 <br>
 
