@@ -84,10 +84,14 @@ This [script](setup.ps1) automates the configuration of several system/network s
 
 <!--
 - IDA Free
+- API Monitor
+- dnSpy
+- CFF Explorer
+- ProcDOT
+- Scylla
 - Malcat
 - Binary Ninja
 - Volatility3
-- Cutter
 -->
 
 <br>
