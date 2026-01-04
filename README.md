@@ -11,9 +11,9 @@ My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly 
 
 
 These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
-- [mal-win10.xml](mal-win10.xml)
 - [mal-NAT.xml](mal-NAT.xml)
 - [mal-host-only.xml](mal-host-only.xml)
+- [mal-win10.xml](mal-win10.xml)
     
 To create an identical guest VM: 
 
@@ -43,14 +43,18 @@ This [script](setup.ps1) automates the configuration of several system/network s
 - 50 GB Storage
 - Custom host-only network interface:
     - Name: mal-host-only
-    - Mode: host-only
+    - Mode: host-only or isolated
     - Subnet: 10.0.0.0/30
-    - Disable DHCP, IPv6
+    - Disable DHCP and IPv6
 - Custom NAT network interface:
     - Name: mal-NAT
     - Mode: NAT   
-    - Subnet: 10.69.69.0/30
-    - Disable DHCP, IPv6
+    - Subnet: 172.16.20.0/30
+    - Disable DHCP and IPv6
+- 3D acceleration
+
+> [!CAUTION]
+> Avoid using shared clipboard, shared folders (read + write), drag-and-drop, or USB storage passthrough/redirection. These are common vectors for VM escape.
 
 <br>
 
@@ -150,8 +154,7 @@ Below are firewall rules (ufw) I have applied on the host-level. They (1) block 
 
 ## Tips
 - After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware.
-- Avoid using shared clipboard, shared folders (read/write), Drag-and-drop, and USB storage passthrough/redirection. These are common vectors for VM escape.
-- Before executing malware, make sure all hypervisor software is up to date with the latest security patches applied.
+- Before executing malware, make sure all hypervisor/emulation software is up to date with the latest security patches applied.
 - Use bash alias for python server<br>
   Ex: `alias pyserver='python3 -m http.server -d ~/Downloads/mal-win10 --bind 10.0.0.1 8888'`
 - Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
