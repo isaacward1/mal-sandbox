@@ -32,7 +32,10 @@ To create an identical guest VM:
 > if encountering heavy pixelation and screen tearing during/after boot, disable opengl/3d acceleration temporarily, install this driver, then reenable.
 
 ### Setup.ps1
-This [script](setup.ps1) automates the configuration of several system/network settings and necessary performance tweaks. Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools). Things to change manually are listed at the bottom cuz powershell is trash
+This [script](setup.ps1) automates the configuration of several system/network settings and appearance/performance tweaks 
+- `$hostonly_mac` and `$nat_mac` values should be changed reflect VM-side MAC address (determined with `virsh domiflist mal-win10`)
+- Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools)
+- Things to change manually are listed at the bottom cuz powershell is trash
 
 ### Removing Interference
 Though [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5) should be enough, if zero interference is desired, follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to permanently disable Defender, Tamper Protection, and Windows Updates.
