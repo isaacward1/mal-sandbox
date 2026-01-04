@@ -1,5 +1,5 @@
 # mal-sandbox
-My personal sanbox setup for analysis of Windows x86-64 malware. This is mainly for personal reference and half-assed documentation 🤷‍♂️
+My personal KVM/QEMU sandbox for analysis of Windows x86-64 malware. This is mainly for personal documentation/reference 🤷‍♂️
 
 <br>
 
@@ -33,6 +33,9 @@ To create an identical guest VM:
 
 ### Setup.ps1
 This [script](setup.ps1) automates the configuration of several system/network settings and necessary performance tweaks. Tools are installed via Chocolately packages, but can be installed manually via [links below](https://github.com/isaacward1/mal-sandbox/blob/main/README.md#analysis-tools). Things to change manually are listed at the bottom cuz powershell is trash
+
+### Removing Interference
+Though [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5) should be enough, if zero interference is desired, follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to permanently disable Defender, Tamper Protection, and Windows Updates.
 
 <br>
 
@@ -100,14 +103,9 @@ This [script](setup.ps1) automates the configuration of several system/network s
 
 <br>
 
-## Setup
-### Removing interference
-1. Follow these [steps](https://github.com/mandiant/flare-vm?tab=readme-ov-file#pre-installation) to disable Tamper Protection and annoying Windows Defender
-2. Disable everything in startup
+## Network Isolation
 
-### Network Isolation
-
-Below are firewall rules (ufw) I have applied on the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server. Replace all variable values to align with desired setup.
+Below are firewall rules (ufw) I have applied at the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server.
 
     var1="mal-NAT-br"   # name of VM's NAT bridge/gateway
     var2="172.16.20.1"  # NAT bridge/gateway IP
