@@ -1,12 +1,12 @@
 ﻿Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # variables // change as needed
-$hostonly_mac = "52:54:00:d4:e2:8d" # MAC address of the guest-side host-only interface
+$hostonly_mac = "52:54:00:d4:e2:8d" # MAC address of the guest's host-only interface
 $hostonly_gateway = "10.0.0.1" # gateway IP of host-only interface 
 $hostonly_subnet = 30 # subnet prefix length for host-only adapter
 $hostonly_ip = "10.0.0.2" # VM's host-only IP
 
-$nat_mac = "52:54:00:4f:ae:80" # MAC address of the guest-side NAT interface
+$nat_mac = "52:54:00:4f:ae:80" # MAC address of the guest's NAT interface
 $nat_gateway = "172.16.20.1" # gateway IP of NAT interface
 $nat_subnet = 30 # subnet prefix length for NAT adapter
 $nat_ip = "172.16.20.2" # VM's NAT IP
@@ -152,3 +152,4 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
