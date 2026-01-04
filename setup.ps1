@@ -69,7 +69,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocola
 write-host "installing tools..."
 $tools = @(
   'pestudio', 'imhex', 'x64dbg.portable', 'temurin', 'ghidra',
-  'cyberchef', 'floss', 'die', 'capa', 'wireshark',
+  'cyberchef', 'floss', 'die', 'capa', 'yara', 'wireshark',
   'sysinternals', 'systeminformer', 'regshot', 'fakenet',
   'upx', '7zip', 'vscode', 'mitmproxy', 'python'
 )
@@ -102,6 +102,7 @@ Install-Module -Name DisplaySettings
 Set-DisplayResolution -Width 1280 -Height 800
 
 # setting wallpaper and locksreen
+write-host "setting wallpaper and locksreen..."
 $image = "C:\Windows\Web\Wallpaper\Windows\img0.jpg"
 Set-ItemProperty -path "HKCU:\Control Panel\Desktop\" -name WallPaper -value $image
 New-Item -path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -name "Personalization" -Force
@@ -117,6 +118,7 @@ New-NetFirewallRule -DisplayName "allow_in_host_to_vm_pyhttp" -Enabled True -Act
 # Set-NetFirewallRule -DisplayName "inbound from internet = block" -Enabled False -ErrorAction SilentlyContinue
 
 # explorer config
+Write-Host "configuring file explorer..."
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\" -Name Hidden -Value 1
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\" -Name HideFileExt -Value 0
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\" -Name ShowRecent -Value 0
@@ -124,6 +126,7 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
 Stop-Process -ProcessName explorer -Force
 
 # disabling NAT interface
+Write-Host "disabling NAT interface..."
 Disable-NetAdapter -Name $nat_adpt.Name -Confirm:$False
 
 # setting proxy for mitmproxy
@@ -132,8 +135,12 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyServer -Value "127.0.0.1:8080"
 Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyOverride -Value 10.0.0.1
 
+# disabling MS defender
+Write-Host "disabling MS defender..."
+Start-Process $tools_folder\disable-defender.exe
+
 # reboot
-write-host "Done! Rebooting..."
+write-host "Done! rebooting in 10s..."
 Start-Sleep 10
 Restart-Computer -Force
 
@@ -144,3 +151,4 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
