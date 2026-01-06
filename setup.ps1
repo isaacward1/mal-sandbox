@@ -70,9 +70,9 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocola
 write-host "installing tools..."
 $tools = @(
   'pestudio', 'imhex', 'x64dbg.portable', 'temurin', 'ghidra',
-  'cyberchef', 'floss', 'die', 'capa', 'yara', 'wireshark',
-  'sysinternals', 'systeminformer', 'regshot', 'fakenet',
-  'upx', '7zip', 'vscode', 'mitmproxy', 'python'
+  'cyberchef', 'floss', 'pesieve', 'die', 'capa', 'yara', 'wireshark',
+  'sysinternals', 'systeminformer', 'apimonitor', 'regshot', 'fakenet',
+  'upx', '7zip', 'vscode', 'mitmproxy', 'volatility3', 'python'
 )
 foreach ($tool in $tools) {
   choco install $tool -y --ignore-checksums
@@ -152,5 +152,6 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
 
 
