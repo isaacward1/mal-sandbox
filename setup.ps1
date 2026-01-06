@@ -90,7 +90,7 @@ Invoke-WebRequest -Uri https://github.com/pgkt04/defender-control/releases/downl
 
 # installing mesa drivers
 Write-Host "installing mesa drivers..."
-Write-Host "choose '1. Core desktop OpenGL drivers', then exit"
+Write-Host "choose '1. Core desktop OpenGL drivers', then 9. Exit"
 Start-Sleep 5
 Invoke-WebRequest -Uri https://github.com/pal1000/mesa-dist-win/releases/download/25.3.2/mesa3d-25.3.2-release-msvc.7z -OutFile mesa-dist-win.7z
 7z.exe x .\mesa-dist-win.7z -omesa-dist-win -y
@@ -152,4 +152,5 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
 
