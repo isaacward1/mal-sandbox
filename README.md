@@ -78,31 +78,31 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 
 ### Dynamic
 - [x64dbg](https://github.com/x64dbg/x64dbg)
+- [PE-sieve](https://github.com/hasherezade/pe-sieve)
 - [Wireshark](https://www.wireshark.org/download.html)
 - [mitmproxy](https://www.mitmproxy.org/)
 - [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) (TCPView, Procmon, Autoruns, Strings)
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
+- [API Monitor](http://www.rohitab.com/downloads)
 - [FakeNet](https://github.com/mandiant/flare-fakenet-ng)
 
 ### Other
 - [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5)
 - [VSCode](https://code.visualstudio.com/)
 - [Python](https://www.python.org/downloads/) (v3.14)
+- [Volatility 3](https://github.com/volatilityfoundation/volatility3)
 - [Temurin JDK](https://adoptium.net/temurin/releases) (v21.0)
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
 <!--
 - IDA Free
-- API Monitor
 - dnSpy
 - CFF Explorer
-- ProcDOT
 - Scylla
 - Malcat
 - Binary Ninja
-- Volatility3
 -->
 
 <br>
