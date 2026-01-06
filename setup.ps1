@@ -71,26 +71,30 @@ write-host "installing tools..."
 $tools = @(
   'pestudio', 'imhex', 'x64dbg.portable', 'temurin', 'ghidra',
   'cyberchef', 'floss', 'pesieve', 'die', 'capa', 'yara', 'wireshark',
-  'sysinternals', 'systeminformer', 'apimonitor', 'regshot', 'fakenet',
+  'sysinternals', 'systeminformer', 'regshot', 'fakenet',
   'upx', '7zip', 'vscode', 'mitmproxy', 'volatility3', 'python'
 )
 foreach ($tool in $tools) {
   choco install $tool -y --ignore-checksums
 }
 
-# Invoke-WebRequest -Uri http://www.rohitab.com/download/api-monitor-v2r13-x86-x64.zip -OutFile api-monitor.zip
-# Expand-Archive -Path .\api-monitor.zip -DestinationPath .\api-monitor
-# Move-Item ".\api-monitor\API Monitor (rohitab.com)\*" "$env:ProgramFiles\api-monitor"
-# Remove-Item .\api-monitor.zip
-
+# installing imhex (NoGPU)
 # Invoke-WebRequest -Uri https://github.com/WerWolv/ImHex/releases/download/v1.38.1/imhex-1.38.1-Windows-Portable-NoGPU-x86_64.zip -OutFile ImHex.zip
 # Expand-Archive -Path .\ImHex.zip -DestinationPath "$env:ProgramFiles\ImHex"
 # Remove-Item .\ImHex.zip
 
+# installing api-monitor
+Invoke-WebRequest -Uri http://www.rohitab.com/download/api-monitor-v2r13-x86-x64.zip -OutFile api-monitor.zip
+Expand-Archive -Path .\api-monitor.zip -DestinationPath .\api-monitor
+Move-Item .\api-monitor -Destination $env:ProgramFiles
+Remove-Item .\api-monitor.zip
+
+# installing npcap
 Invoke-WebRequest -Uri https://npcap.com/dist/npcap-1.85.exe -OutFile npcap-1.85.exe
 .\npcap-1.85.exe
 Remove-Ttem .\npcap-1.85.exe
 
+# installing disable-defender.exe
 Invoke-WebRequest -Uri https://github.com/pgkt04/defender-control/releases/download/v1.5/disable-defender.exe -OutFile $tools_folder\disable-defender.exe
 
 # installing mesa drivers
@@ -157,6 +161,7 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
 
 
 
