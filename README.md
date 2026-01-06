@@ -11,14 +11,15 @@ My personal KVM/QEMU sandbox for analysis of Windows x86-64 malware. This is mai
 
 
 These are the libvirt XML files for replicating my KVM/QEMU VM and networks:
-- [mal-NAT.xml](mal-NAT.xml)
+
 - [mal-host-only.xml](mal-host-only.xml)
+- [mal-NAT.xml](mal-NAT.xml)
 - [mal-win10.xml](mal-win10.xml)
     
 To create an identical guest VM: 
 
-    sudo virsh net-define mal-NAT.xml
     sudo virsh net-define mal-host-only.xml
+    sudo virsh net-define mal-NAT.xml
     sudo virsh define mal-win10.xml
 
 > [!NOTE]
