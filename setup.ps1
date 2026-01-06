@@ -161,10 +161,3 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
-
-
-
-
-
-
-
