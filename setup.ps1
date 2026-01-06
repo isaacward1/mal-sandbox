@@ -80,7 +80,7 @@ foreach ($tool in $tools) {
 
 # Invoke-WebRequest -Uri http://www.rohitab.com/download/api-monitor-v2r13-x86-x64.zip -OutFile api-monitor.zip
 # Expand-Archive -Path .\api-monitor.zip -DestinationPath .\api-monitor
-# Move-Item "C:\Program Files\api-monitor\API Monitor (rohitab.com)\*" "$env:ProgramFiles\api-monitor"
+# Move-Item ".\api-monitor\API Monitor (rohitab.com)\*" "$env:ProgramFiles\api-monitor"
 # Remove-Item .\api-monitor.zip
 
 # Invoke-WebRequest -Uri https://github.com/WerWolv/ImHex/releases/download/v1.38.1/imhex-1.38.1-Windows-Portable-NoGPU-x86_64.zip -OutFile ImHex.zip
@@ -157,6 +157,7 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
 
 
 
