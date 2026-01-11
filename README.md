@@ -98,12 +98,11 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 
 <!--
 - IDA Free
-- dnSpy
+- dnSpy(Ex)
 - CFF Explorer
 - Scylla
 - Malcat
 - Binary Ninja
-
 
 - turn off cloud-based protection and automatic sample submission via registry
 -->
