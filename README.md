@@ -105,7 +105,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 - Binary Ninja
 
 
-- turn off cloud-based protection and automatic sample submission
+- turn off cloud-based protection and automatic sample submission via registry
 -->
 
 <br>
