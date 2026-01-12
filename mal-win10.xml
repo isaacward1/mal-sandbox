@@ -57,11 +57,13 @@
     <interface type='network'>
       <source network='mal-NAT'/>
       <model type='e1000e'/>
+      <filterref filter='mal-root'/>
       <link state='down'/>
     </interface>
     <interface type='network'>
       <source network='mal-host-only'/>
       <model type='e1000e'/>
+      <filterref filter='mal-root'/>
     </interface>
     <input type='tablet' bus='usb'>
     </input>
