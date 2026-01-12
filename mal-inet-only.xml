@@ -1,0 +1,20 @@
+<filter name='mal-inet-only' chain='ipv4' priority='-700'>
+  <!-- allow outbound to mal-NAT-br -->
+  <rule action='accept' direction='out' priority='500'>
+    <ip dstipaddr='172.16.20.1'/>
+  </rule>
+ 
+  <!-- block outbound to LAN IPs-->
+  <rule action='drop' direction='out' priority='501'>
+    <ip dstipaddr='10.0.0.0' dstipmask='8'/>
+  </rule>
+  <rule action='drop' direction='out' priority='501'>
+    <ip dstipaddr='172.16.0.0' dstipmask='12'/>
+  </rule>
+  <rule action='drop' direction='out' priority='501'>
+    <ip dstipaddr='192.168.0.0' dstipmask='16'/>
+  </rule>
+
+  <!-- allow outbound to anywhere else -->
+  <rule action='accept' direction='out' priority='600'/>
+</filter>

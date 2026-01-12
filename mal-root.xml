@@ -1,0 +1,5 @@
+<filter name='mal-root' chain='root'>
+  <filterref filter='allow-arp'/>
+  <filterref filter='clean-traffic'/>
+  <filterref filter='mal-inet-only'/>
+</filter>
