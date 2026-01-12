@@ -20,7 +20,7 @@ To create an identical guest VM:
 
     sudo virsh net-define mal-host-only.xml
     sudo virsh net-define mal-NAT.xml
-    sudo virsh nwfilter-define mal-inet-only.xml
+    sudo virsh nwfilter-define mal-isolate.xml
     sudo virsh nwfilter-define mal-root.xml
     sudo virsh define mal-win10.xml
 
