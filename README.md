@@ -113,7 +113,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 
 ## Network Isolation
 Isolation is done by libvirt [network filters](https://libvirt.org/formatnwfilter.html).
-### mal-inet-only:
+### mal-isolate:
     <filter name='mal-inet-only' chain='ipv4' priority='-700'>
       <!-- allow outbound to mal-NAT-br -->
       <rule action='accept' direction='out' priority='500'>
