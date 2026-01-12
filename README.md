@@ -112,7 +112,8 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 <br>
 
 ## Network Isolation
-Isolation is done by libvirt [network filters](https://libvirt.org/formatnwfilter.html).
+Isolation is done mostly through libvirt [network filters](https://libvirt.org/formatnwfilter.html).
+
 ### mal-isolate:
     <filter name='mal-isolate' chain='ipv4' priority='-700'>
       <!-- allow outbound to mal-ho-br -->
@@ -147,22 +148,15 @@ Isolation is done by libvirt [network filters](https://libvirt.org/formatnwfilte
       <filterref filter='mal-inet-only'/>
     </filter>
 
-<!--
-Below are firewall rules (ufw) I have applied at the host-level. They (1) block communication with the host system's LAN while allowing outbound traffic to the internet and (2) allow inbound local access to the host's python http server.
-
-    var1="mal-NAT-br"   # name of VM's NAT bridge/gateway
-    var2="172.16.20.1"  # NAT bridge/gateway IP
-    var3="mal-ho-br"    # name of VM's host-only bridge
-    var4="10.0.0.1"     # host-only interface's gateway IP
-    var5="10.0.0.2"     # host IP assigned to VM on host-only network
-    var6="8888"         # python http.server port
+### UFW
+Firewall rule applied on the host. It allows inbound access from the VM to the host's python http server.
     
-    sudo ufw allow out on $var1 from any to $var2 comment '(mal) allow to NAT-gateway only (for internet access)'
-    sudo ufw allow in on $var3 from $var5 to $var4 port $var6 proto tcp comment '(mal) allow to host python http.server'
-    sudo ufw allow out on $var3 from $var4 to $var5 port $var6 proto tcp comment '(mal) allow to guest python http.server'
-    sudo ufw deny out on $var1 from any to any comment '(mal) Isolate mal-NAT'
-    sudo ufw deny out on $var3 from any to any comment '(mal) Isolate mal-host-only'
--->
+    iface="mal-ho-br"	# name of VM's host-only bridge
+    br_ip="10.0.0.1"	# host-only interface's gateway IP
+    vm_ip="10.0.0.2"	# host IP assigned to VM on host-only network
+    port="8888"			# python http.server port
+    
+    sudo ufw allow in on $iface from $vm_ip to $br_ip port $port proto tcp comment '(mal) allow to host python http.server'
 
 <br>
 
