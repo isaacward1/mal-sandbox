@@ -48,7 +48,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 ## System
 - Windows 10
 - 4 vCPUs (1 socket, 2 cores, 2 threads)
-- 6 GB Memory
+- 8 GB Memory
 - 50 GB Storage
 - Custom host-only network interface:
     - Name: mal-host-only
