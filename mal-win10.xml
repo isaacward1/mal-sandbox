@@ -5,8 +5,8 @@
       <libosinfo:os id="http://microsoft.com/win/10"/>
     </libosinfo:libosinfo>
   </metadata>
-  <memory unit='KiB'>6291456</memory>
-  <currentMemory unit='KiB'>6291456</currentMemory>
+  <memory unit='KiB'>8388608</memory>
+  <currentMemory unit='KiB'>8388608</currentMemory>
   <vcpu placement='static'>4</vcpu>
   <os>
     <type arch='x86_64' machine='q35'>hvm</type>
