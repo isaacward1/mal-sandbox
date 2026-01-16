@@ -83,7 +83,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 - [PE-sieve](https://github.com/hasherezade/pe-sieve)
 - [Wireshark](https://www.wireshark.org/download.html)
 - [mitmproxy](https://www.mitmproxy.org/)
-- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite) (Procmon, Autoruns, Strings)
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite)
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [API Monitor](http://www.rohitab.com/downloads)
