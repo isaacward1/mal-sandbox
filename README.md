@@ -98,17 +98,6 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 - [UPX](https://github.com/upx/upx)
 - [7-Zip](https://www.7-zip.org/)
 
-<!--
-- IDA Free
-- dnSpy(Ex)
-- CFF Explorer
-- Scylla
-- Malcat
-- Binary Ninja
-
-- turn off cloud-based protection and automatic sample submission via registry
--->
-
 <br>
 
 ## Network Isolation
@@ -196,3 +185,19 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 - Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
 
 <br>
+
+<!-- 
+To-Do
+--------------------------------------
+- PE Bear
+- IDA Free
+- dnSpy(Ex)
+- CFF Explorer
+- Scylla
+- Malcat
+- Binary Ninja
+
+- right-click context menu for tools
+- disable hide system files in explorer
+- turn off cloud-based protection and automatic sample submission via registry
+-->
