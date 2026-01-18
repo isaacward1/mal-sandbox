@@ -87,7 +87,6 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 - [System Informer](https://github.com/winsiderss/systeminformer)
 - [RegShot](https://sourceforge.net/projects/regshot/)
 - [API Monitor](http://www.rohitab.com/downloads)
-- [FakeNet](https://github.com/mandiant/flare-fakenet-ng)
 
 ### Other
 - [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5)
@@ -178,8 +177,9 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 <br>
 
 ## Tips
-- After setup and tweaking, create a snapshot so that you can revert to a clean state after detonating malware.
-- Before executing malware, make sure all hypervisor/emulation software is up to date with the latest security patches applied.
+- It is not recommended to allow internet access to the VM if you are not aware of the possible consequences. Use [FakeNet](https://github.com/mandiant/flare-fakenet-ng) or [INetSim](https://www.inetsim.org/index.html) if unsure.
+- After setup and tweaking, take a snapshot to revert back to a clean state after detonating malware.
+- Before executing malware, ensure all hypervisor/emulation software is up to date with the latest security patches applied.
 - Use bash alias for python server<br>
   Ex: `alias pyserver='python3 -m http.server -d ~/Downloads/mal-win10 --bind 10.0.0.1 8888'`
 - Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
@@ -194,6 +194,7 @@ To-Do
 - pin tcpview
 - PE Bear
 - dnSpy(Ex)
+- ILSpy
 - Malcat
 - IDA Free
 - Binary Ninja
