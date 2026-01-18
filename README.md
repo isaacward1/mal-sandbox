@@ -189,6 +189,7 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 <!-- 
 To-Do
 --------------------------------------
+- Everything toolbar
 - Notepad++ (pinned)
 - pin tcpview
 - PE Bear
