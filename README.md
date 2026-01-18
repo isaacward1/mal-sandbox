@@ -193,13 +193,14 @@ To-Do
 - Notepad++ (pinned)
 - pin tcpview
 - PE Bear
-- IDA Free
 - dnSpy(Ex)
+- Malcat
+- IDA Free
+- Binary Ninja
 - CFF Explorer
 - Scylla
-- Malcat
-- Binary Ninja
 
+- dont show full path in powershell terminal
 - turn system icons off on taskbar
 - right-click context menu for tools
 - disable hide system files in explorer
