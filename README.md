@@ -201,6 +201,7 @@ To-Do
 - CFF Explorer
 - Scylla
 
+- Dark app theme
 - x32dbg on the taskbar and in tools
 - dont show full path in powershell terminal
 - turn system icons off on taskbar
