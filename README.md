@@ -189,6 +189,8 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 <!-- 
 To-Do
 --------------------------------------
+- Notepad++ (pinned)
+- pin tcpview
 - PE Bear
 - IDA Free
 - dnSpy(Ex)
@@ -197,6 +199,7 @@ To-Do
 - Malcat
 - Binary Ninja
 
+- turn system icons off on taskbar
 - right-click context menu for tools
 - disable hide system files in explorer
 - turn off cloud-based protection and automatic sample submission via registry
