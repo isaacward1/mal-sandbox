@@ -1,5 +1,5 @@
 # mal-sandbox
-my personal KVM/QEMU sandbox for analysis of Windows x86-64 malware. mainly for personal documentation/reference 🤷‍♂️
+my personal KVM/QEMU sandbox for analysis of Windows x86-64 malware. this is mainly for my own documentation/reference 🤷‍♂️
 
 <br>
 
