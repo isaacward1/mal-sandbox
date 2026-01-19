@@ -70,7 +70,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 ## Analysis Tools
 ### Static
 - [PEStudio](https://www.winitor.com/download)
-- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
+- [DIE](https://github.com/horsicq/DIE-engine/releases)
 - [ImHex](https://github.com/WerWolv/ImHex)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
