@@ -70,11 +70,11 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 ## Analysis Tools
 ### Static
 - [PEStudio](https://www.winitor.com/download)
+- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [ImHex](https://github.com/WerWolv/ImHex)
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra)
 - [CyberChef](https://github.com/gchq/CyberChef)
 - [FLOSS](https://github.com/mandiant/flare-floss)
-- [Detect it Easy](https://github.com/horsicq/DIE-engine/releases)
 - [CAPA](https://github.com/mandiant/capa/releases)
 - [YARA](https://github.com/VirusTotal/yara)
 
@@ -90,7 +90,7 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 
 ### Other
 - [disable-defender.exe](https://github.com/pgkt04/defender-control/releases/tag/v1.5)
-- [VSCode](https://code.visualstudio.com/)
+- [VS Code](https://code.visualstudio.com/)
 - [Python](https://www.python.org/downloads/) (v3.14)
 - [Volatility 3](https://github.com/volatilityfoundation/volatility3)
 - [Temurin JDK](https://adoptium.net/temurin/releases) (v21.0)
