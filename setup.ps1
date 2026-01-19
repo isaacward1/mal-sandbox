@@ -1,4 +1,5 @@
-﻿Set-ExecutionPolicy Bypass -Scope Process -Force
+# ﻿Set-ExecutionPolicy Bypass -Scope Process -Force
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 
 # variables // change as needed
 $hostonly_mac = "52:54:00:d4:e2:8d" # MAC address of the guest's host-only interface
@@ -161,3 +162,4 @@ Restart-Computer -Force
 4. edge settings (download path, etc.), mal sample DB bookmarks
 5. installing root cert for mitmproxy
 #>
+
