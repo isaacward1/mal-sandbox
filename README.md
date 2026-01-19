@@ -197,6 +197,7 @@ To-Do
 - PE Bear
 - dnSpy(Ex)
 - ILSpy
+
 - Malcat
 - IDA Free
 - Binary Ninja
@@ -204,10 +205,8 @@ To-Do
 - Scylla
 
 - Dark app theme
-- x32dbg on the taskbar and in tools
 - dont show full path in powershell terminal
 - turn system icons off on taskbar
 - right-click context menu for tools
-- disable hide system files in explorer
 - turn off cloud-based protection and automatic sample submission via registry
 -->
