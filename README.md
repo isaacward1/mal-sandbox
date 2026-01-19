@@ -65,6 +65,9 @@ Though [disable-defender.exe](https://github.com/pgkt04/defender-control/release
 > [!CAUTION]
 > Avoid using shared clipboard, shared folders (read + write), drag-and-drop, or USB storage passthrough/redirection. These are common vectors for VM escape.
 
+> [!CAUTION]
+> It is not recommended to allow internet access to the VM if you are not aware of the possible consequences. Use [FakeNet](https://github.com/mandiant/flare-fakenet-ng) or [INetSim](https://www.inetsim.org/index.html) and no NAT/bridge interface if unsure.
+
 <br>
 
 ## Analysis Tools
@@ -177,7 +180,6 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 <br>
 
 ## Tips
-- It is not recommended to allow internet access to the VM if you are not aware of the possible consequences. Use [FakeNet](https://github.com/mandiant/flare-fakenet-ng) or [INetSim](https://www.inetsim.org/index.html) and no NAT/bridge interface if unsure.
 - After setup and tweaking, take a snapshot to revert back to a clean state after detonating malware.
 - Before executing malware, ensure all hypervisor/emulation software is up to date with the latest security patches applied.
 - Use bash alias for python server<br>
