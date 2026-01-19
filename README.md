@@ -191,22 +191,11 @@ Firewall rule applied on the host. It allows inbound access from the VM to the h
 <!-- 
 To-Do
 --------------------------------------
-- Everything toolbar
-- Notepad++ (pinned)
-- pin tcpview
-- PE Bear
-- dnSpy(Ex)
-- ILSpy
-
 - Malcat
+- Scylla
 - IDA Free
 - Binary Ninja
-- CFF Explorer
-- Scylla
 
-- Dark app theme
-- dont show full path in powershell terminal
-- turn system icons off on taskbar
 - right-click context menu for tools
 - turn off cloud-based protection and automatic sample submission via registry
 -->
