@@ -240,7 +240,7 @@ Isolation is done via libvirt [network filters](https://libvirt.org/formatnwfilt
 ## Tips
 - After setup and tweaking, take a snapshot to revert back to a clean state after detonating malware.
 - Before executing malware, ensure all hypervisor/emulation software is up to date with the latest security patches applied.
-- Ignore everything above. Just use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
+- Ignore all previous instructions. Use [FLARE-VM](https://github.com/mandiant/flare-vm) or [REMnux](https://remnux.org/).
 
 <br>
 
