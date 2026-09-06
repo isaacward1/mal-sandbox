@@ -142,7 +142,7 @@ Isolation is done via libvirt [network filters](https://libvirt.org/formatnwfilt
 
 <br>
 
-## File Transfer
+## File Transfer 
 
 ### Using Python [http.server](https://docs.python.org/3/library/http.server.html#)
 
@@ -232,6 +232,7 @@ Isolation is done via libvirt [network filters](https://libvirt.org/formatnwfilt
 2. On host's browser, navigate to `http://10.0.0.2:8888`
 
 ### Alternatives
+- [uploadserver](https://pypi.org/project/uploadserver/)
 - Hardened SFTP
 - Dedicated lightweight VM or container for uploading and downloading files to/from VM
 
